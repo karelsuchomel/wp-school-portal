@@ -1,0 +1,182 @@
+@use "../inc/bootstrap" as bs;
+@use '../variables' as vars;
+@use '../buttons' as btn;
+
+.wp-block-ach-hero-card {
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-end;
+	height: 25rem;
+	margin-top: 4rem;
+	margin-bottom: 6.5rem;
+	@include bs.media-breakpoint-down('md') {
+		margin-top: 3rem;
+		margin-bottom: 4rem;
+	}
+
+	.image-wrapper {
+		position: relative;
+		width: 60%;
+		flex-shrink: 0;
+		height: 100%;
+		background: #DDD;
+		border-radius: 0.25rem;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		button {
+
+			&.image-button {
+				padding: 0;
+				height: 100%;
+				width: 100%;
+			}
+
+			&:hover {
+				img {
+					filter: brightness(0.75);
+				}
+			}
+		}
+
+		img {
+			display: block;
+			width: 100%;
+			transition: filter 0.3s;
+			border-radius: 0.25rem;
+
+			@supports (object-fit: cover) {
+				object-fit: cover;
+				height: 100%;
+				width: 100%;
+			}
+		}
+	}
+
+	.text-card {
+		position: relative;
+		width: 55%;
+		margin-left: -15%;
+		margin-bottom: -3rem;
+		padding: 4rem 0 4rem 3.5rem;
+
+		&::before {
+			content: '';
+			background: white;
+			border-radius: 0.75rem;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			transform: rotate(-4deg);
+		}
+
+		// Remove additional spacing
+		[data-block] {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+
+		.text-wrapper {
+			position: relative;
+
+			h1 {
+				font-weight: normal;
+				margin-top: 0;
+				margin-bottom: 0.625em;
+				line-height: 1.125;
+			}
+
+			p {
+				@include bs.font-size(1.375rem);
+			}
+			
+			div > a {
+				@include btn.button-styling();
+			}
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: -2rem;
+			right: 45%;
+			width: 2.5rem;
+			height: 8rem;
+			background-image: url('../../img/drawn-arrow-down.svg');
+			background-size: 2.5rem 8rem;
+			background-position: center center;
+			background-repeat: no-repeat;
+
+			@include bs.media-breakpoint-down('lg') {
+				right: 25%;
+			}
+
+			@include bs.media-breakpoint-down('md') {
+				bottom: 0;
+				right: 25%;
+				width: 2rem;
+				height: 6rem;
+				background-size: 2rem 6rem;
+			}
+
+			@include bs.media-breakpoint-down('sm') {
+				bottom: -1.5rem;
+				right: 40%;
+			}
+
+			@include bs.media-breakpoint-down('xs') {
+				right: 25%;
+				height: 5rem;
+				background-size: 2rem 5rem;
+			}
+
+			@media screen and (max-width: 360px) {
+				right: 18%;
+			}
+		}
+	}
+
+	// Mobile layout
+	@include bs.media-breakpoint-down('sm') {
+		flex-wrap: wrap;
+		height: auto;
+
+		.image-wrapper {
+			width: 100%;
+		}
+
+		.text-card {
+			width: 100%;
+			margin-left: 0;
+			margin-bottom: -1rem;
+			margin-top: -2rem;
+			padding: 2rem 3rem;
+	
+			&::before {
+				border-radius: 0.75rem;
+				transform: rotate(3deg) translateX(0.75rem);
+			}
+		}
+
+	}
+
+	@include bs.media-breakpoint-down('xs') {
+		.text-card {
+			margin-bottom: 0;
+			margin-top: -1rem;
+			padding: 0.875rem 0;
+	
+			&::before {
+				border-radius: 0;
+				transform: scale(1.1) rotate(4deg);
+			}
+		}
+
+	}
+
+}

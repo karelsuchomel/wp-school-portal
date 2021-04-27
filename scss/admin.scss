@@ -1,0 +1,31 @@
+@use "type";
+@use "buttons";
+@use "variables" as vars;
+
+// Main column width
+.wp-block {
+    max-width: vars.$page-max-width;
+}
+
+// How link url field is rendered
+.wp-block-button {
+	> .wp-block-button__inline-link {
+		position: absolute;
+		top: 50%;
+		margin-top: 0;
+		width: 12rem;
+		left: calc(100% + 2rem);
+		transform: translateY(-50%);
+
+		> .components-base-control__field {
+			display: flex;
+			align-items: center;
+			margin-bottom: 0;
+
+			> label {
+				margin-bottom: 0;
+				margin-right: 0.5rem;
+			}
+		}
+	}
+}

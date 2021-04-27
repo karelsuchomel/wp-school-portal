@@ -1,0 +1,36 @@
+@use "variables" as vars;
+@use "fonts";
+
+// Incorporated libraries
+@use "inc/bootstrap" with(
+	$enable-responsive-font-sizes: true,
+	$rfs-base-font-size: 1rem,
+	$font-family-base: #{vars.$base-font, sans-serif},
+	$headings-font-family: #{vars.$headline-font, sans-serif},
+);
+@use "inc/photoswipe" with(
+$pswp__background-color: #fff,
+);
+
+// Variables, mixins, functions
+@use "mixins";
+
+// Styling
+@use "type";
+@use "skip-to-content-link";
+@use "content";
+@use "footer";
+@use "buttons";
+
+@use "header/header";
+@use "header/hamburger-icon";
+@use "header/mobile-navigation";
+@use "header/language-selector";
+
+@use "blocks/hero-card";
+@use "blocks/product-showcase";
+
+@use "custom-classes/footer-product-listing";
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Jaldi:700|Source+Sans+Pro:400,600&display=swap&subset=latin-ext');

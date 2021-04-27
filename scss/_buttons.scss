@@ -1,0 +1,24 @@
+@use 'variables' as vars;
+@use 'sass:color';
+
+@mixin button-styling() {
+	display: inline-block;
+	padding: 0.75rem 2rem;
+	background-color: vars.$light;
+	border-radius: 10rem;
+	transition: background-color vars.$animation-duration;
+
+	color: vars.$base-text-color;
+	font-weight: 700;
+	text-decoration: none;
+
+	&:hover, &:active, &:focus {
+		color: vars.$base-text-color;
+		background-color: color.scale(vars.$light, $lightness: -10%);
+	}
+}
+
+.wp-block-button__link {
+	@include button-styling();
+	font-size: 1rem;
+}

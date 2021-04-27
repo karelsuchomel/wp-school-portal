@@ -1,0 +1,16 @@
+$pswp__background-color: #000 !default;
+
+.pswp__ui--fit .pswp__top-bar {
+	background-color: white;
+}
+
+.pswp__ {
+
+	&bg {
+		background: $pswp__background-color;
+	}
+
+	&img {
+		border-radius: 0.25rem;
+	}
+}

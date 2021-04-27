@@ -1,0 +1,30 @@
+@use 'variables' as vars;
+
+// Jaldi
+@font-face {
+    font-family: 'Jaldi';
+    src: url('../../fonts/jaldi/jaldi-bold-webfont.woff2') format('woff2'),
+         url('../../fonts/jaldi/jaldi-bold-webfont.woff') format('woff'),
+         url('../../fonts/jaldi/jaldi-bold-webfont.ttf') format('ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+// Source Sans Pro
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('../../fonts/source-sans-pro/sourcesanspro-bold-webfont.woff2') format('woff2'),
+         url('../../fonts/source-sans-pro/sourcesanspro-bold-webfont.woff') format('woff'),
+         url('../../fonts/source-sans-pro/sourcesanspro-bold-webfont.ttf') format('ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('../../fonts/source-sans-pro/sourcesanspro-regular-webfont.woff2') format('woff2'),
+         url('../../fonts/source-sans-pro/sourcesanspro-regular-webfont.woff') format('woff'),
+         url('../../fonts/source-sans-pro/sourcesanspro-regular-webfont.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}

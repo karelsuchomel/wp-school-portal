@@ -1,0 +1,13 @@
+@use '../variables' as vars;
+
+#language-selector-ccontainer {
+	a {
+		background: vars.$gray;
+		border-radius: 2rem;
+		padding: 0.375rem 1rem;
+
+		font-size: 1rem;
+		font-weight: 600;
+
+	}
+}

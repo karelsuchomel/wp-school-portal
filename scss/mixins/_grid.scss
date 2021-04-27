@@ -1,0 +1,70 @@
+@function getListOfKeysFromMap($map) {
+	$newMap: ();
+
+	@each $key, $value in $map {
+		$newMap: append($newMap, $key);
+	}
+
+	@return $newMap;
+}
+
+@mixin make-grid-breakpoints(
+	$cols: (
+		"xs": 1,
+		"md": 2
+	),
+	$gaps: (
+		"xs": 1rem
+	),
+	$itemClassName: '> *'
+) {
+	display: flex;
+	flex-wrap: wrap;
+
+	@each $brkp, $gap in $gaps {
+		@include media-breakpoint-up($brkp) {
+			@if $gap != 0 {
+				margin: -$gap;
+				width: calc(100% + #{$gap*2});
+			} @else {
+				margin: 0;
+				width: 100%;
+			}
+		}
+	}
+
+	$AllBrkp: getListOfKeysFromMap($grid-breakpoints);
+
+	$cols-keys: getListOfKeysFromMap($cols);
+	$col-current: null;
+	$gaps-keys: getListOfKeysFromMap($gaps);
+	$gap-current: null;
+
+	#{$itemClassName} {
+	@each $brkp in $AllBrkp {
+		$change: false;
+
+		@if index($cols-keys, $brkp) {
+			$col-current: map-get($cols, $brkp);
+			$change: true;
+		}
+
+		@if index($gaps-keys, $brkp) {
+			$gap-current: map-get($gaps, $brkp);
+			$change: true;
+		}
+
+		@if $change {
+			@include media-breakpoint-up($brkp) {
+				margin: $gap-current;
+
+				@if $gap-current != 0 {
+					width: calc(#{100%/$col-current} - #{$gap-current*2});
+				} @else {
+					width: calc(#{100%/$col-current});
+				}
+			}
+		}
+	}
+	}
+}

@@ -1,0 +1,13 @@
+//
+// Footer
+//
+@use 'variables' as *;
+@use 'mixins' as mixin;
+
+footer {
+	max-width: $page-max-width;
+	margin: $page-gutter auto;
+	@include mixin.apply-page-gutters() {
+		padding: 0 $page-gutter;
+	}
+}

@@ -1,0 +1,27 @@
+// Generating header heights that apply to @media breakpoints
+
+@mixin apply-header-heights() {
+
+	// We have to do the trick with changing global variable,
+	// becaue @content blocks are lexically scoped and vouldn't use
+	// any variables defined in the @mixin. There is a "@use ($variable)"
+	// solution, but the implementation of it is lacking (only Dart Sass >= 1.15.0).
+	$initial-value: $header-height;
+	$last-header-height: null;
+
+	@each $breakpoint in map-keys($grid-breakpoints) {
+		$header-height: map-get($header-heights, $breakpoint) !global;
+
+		@if $last-header-height != $header-height {
+
+			$last-header-height: $header-height;
+			@include media-breakpoint-up($breakpoint) {
+				@content;
+			}
+		}
+
+	}
+
+	// Restoring the old value of header-height
+	$header-height: $initial-value !global;
+}
