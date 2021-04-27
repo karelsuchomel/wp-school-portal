@@ -9,6 +9,7 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
+    <div id="root"></div>
 	<header id="masthead" class="site-header">
 		<div class="site-branding">
 			<?php

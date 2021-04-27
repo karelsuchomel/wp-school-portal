@@ -78,9 +78,9 @@ function school_portal_scripts() {
 	wp_enqueue_style( 'school-portal-style', get_stylesheet_uri(), array(), _S_VERSION );
 
     /* Actual CSS styling */
-    wp_enqueue_style( 'sp-style', get_template_directory_uri() . '/assets/css/bundle.css', array(), _S_VERSION );
+    wp_enqueue_style( 'sp-style', get_template_directory_uri() . '/dist/css/client.css', array(), _S_VERSION );
 
-    wp_enqueue_script( 'sp-javascript', get_template_directory_uri() . '/assets/js/bundle.js', array(), _S_VERSION, true );
+    wp_enqueue_script( 'sp-javascript', get_template_directory_uri() . '/dist/js/client.js', array(), _S_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'school_portal_scripts' );
 
