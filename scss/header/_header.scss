@@ -6,7 +6,7 @@
 @forward 'language-selector';
 @forward 'hamburger-icon';
 
-.site-header {
+header {
 	display: flex;
 	align-items: center;
 
@@ -41,7 +41,7 @@
 	margin: 0;
 }
 
-#site-navigation,
+#header-navigation,
 #language-selector-ccontainer {
 	padding-top: 1rem;
 

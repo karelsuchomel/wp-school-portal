@@ -7,36 +7,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
-<div id="page" class="site">
-    <div id="root"></div>
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			
-			$school_portal_description = get_bloginfo( 'description', 'display' );
-			?>
-		</div><!-- .site-branding -->
-
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'school-portal' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
-	<main id="primary" class="site-main">
-
-		<h3>This is where posts could be</h3>
-		
-	</main><!-- #main -->
-	
+<body id="root" <?php body_class(); ?>>
 <?php
 /**
  * The template for displaying the footer
