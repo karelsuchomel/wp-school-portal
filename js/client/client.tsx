@@ -1,5 +1,13 @@
-import { render } from "solid-js/web";
+import { React, ReactDOM } from "../inc/react.ts";
 
-const HelloMessage = props => <div>Hello {props.name}</div>;
+import App from "./App.tsx";
 
-render(() => <HelloMessage name="Taylor" />, document.getElementById("root"));
+window.addEventListener("DOMContentLoaded", (evt) => {
+    ReactDOM.render(
+        <App />,
+        // @ts-ignore
+        document.getElementById("root"),
+    );
+});
+
+export {};
