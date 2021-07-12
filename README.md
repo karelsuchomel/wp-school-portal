@@ -18,13 +18,13 @@ Restart command line/powershell to get access to these new programs in your PATH
 <details>
   <summary>Installation on Linux</summary>
 
-*Install Deno*
+**Install Deno**
 ```bash
 curl -fsSL https://deno.land/x/install/install.sh | sh
 echo 'export PATH="$HOME/.deno/bin:$PATH"' >> ~/.bashrc
 ```
 
-*Install Dart*
+**Install Dart**
 ```bash
 sudo apt update
 sudo apt install apt-transport-https
@@ -35,7 +35,7 @@ sudo apt install dart
 dart --disable-analytics
 ```
 
-*Install Dart Sass
+**Install Dart Sass**
 ```bash
 dart pub global activate sass
 echo 'export PATH="$HOME/.pub-cache/bin:$PATH"' >> ~/.bashrc
