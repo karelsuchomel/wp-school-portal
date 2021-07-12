@@ -4,7 +4,8 @@
 [Dart SASS](https://github.com/sass/dart-sass#using-dart-sass)
 
 <details>
-  <summary>Installation on Windows with choco</summary> 
+  <summary>Installation on Windows with choco</summary>
+
 ```powershell
 choco install Deno dart-sdk
 pub global activate sass
@@ -15,7 +16,8 @@ Restart command line/powershell to get access to these new programs in your PATH
 </details>
 
 <details>
-  <summary>Installation on Linux</summary> 
+  <summary>Installation on Linux</summary>
+
 *Install Deno*
 ```bash
 curl -fsSL https://deno.land/x/install/install.sh | sh
