@@ -2,7 +2,7 @@
 const scssProcess = Deno.run({
   cmd: [
     "dart",
-    "/home/karel/dart-sass/bin/sass.dart",
+    "sass",
     "--watch",
     "--style",
     "expanded",
