@@ -1,9 +1,10 @@
 // SCSS
 const scssProcess = Deno.run({
   cmd: [
-    "dart",
-    "/home/karel/dart-sass/bin/sass.dart",
+    "sass",
     "--watch",
+    "--quiet-deps",
+    "--no-error-css",
     "--style",
     "expanded",
     "scss/index.scss:dist/css/client.css",
