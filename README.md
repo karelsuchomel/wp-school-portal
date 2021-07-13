@@ -37,7 +37,7 @@ dart --disable-analytics
 
 **Install Dart Sass**
 ```bash
-dart pub global activate sass
+pub global activate sass
 echo 'export PATH="$HOME/.pub-cache/bin:$PATH"' >> ~/.bashrc
 ```
 
