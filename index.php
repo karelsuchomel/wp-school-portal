@@ -7,14 +7,8 @@
 	<?php wp_head(); ?>
 </head>
 
-<body id="root" <?php body_class(); ?>>
-<?php
-/**
- * The template for displaying the footer
- *
- * Contains the closing of the #content div and all content after.
- */
-?>
+<body <?php body_class(); ?>>
+    <div id="root"></div>
 	<footer id="colophon" class="site-footer">
 		<div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'school-portal' ) ); ?>">

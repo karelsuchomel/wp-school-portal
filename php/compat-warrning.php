@@ -30,25 +30,11 @@ function switching_to_default_theme_notice() {
 }
 
 /**
- * Prevents the Customizer from being loaded on WordPress versions prior to 4.7.
- *
- * @since Foxhound 1.0
- */
-function foxhound_customize() {
-	wp_die( __( 'Foxhound requires WordPress 4.7 or higher. Please update your site and try again.', 'foxhound' ), '', array(
-		'back_link' => true,
-	) );
-}
-add_action( 'load-customize.php', 'foxhound_customize' );
-
-/**
  * Prevents the Theme Preview from being loaded on WordPress versions prior to 4.7.
- *
- * @since Foxhound 1.0
  */
-function foxhound_preview() {
+function theme_preview() {
 	if ( isset( $_GET['preview'] ) ) {
-		wp_die( __( 'Foxhound requires WordPress 4.7 or higher. Please update your site and try again.', 'foxhound' ) );
+		wp_die( __( 'Theme requires WordPress 4.7 or higher. Please update your site and try again.', 'school_portal' ) );
 	}
 }
-add_action( 'template_redirect', 'foxhound_preview' );
+add_action( 'template_redirect', 'theme_preview' );

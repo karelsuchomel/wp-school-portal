@@ -3,7 +3,7 @@ const scssProcess = Deno.run({
   cmd: [
     "sass",
     "--watch",
-    "--quiet-deps",
+    "--quiet",
     "--no-error-css",
     "--style",
     "expanded",
