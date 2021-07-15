@@ -101,5 +101,6 @@ add_action( 'admin_menu', 'my_remove_menu_pages' );
 // require get_template_directory() . '/inc/custom-blocks/block-editor-scripts.php';
 
 require_once get_template_directory() . '/php/load-navigation.php';
+require_once get_template_directory() . '/php/load-settings.php';
 
 

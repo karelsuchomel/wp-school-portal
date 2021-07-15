@@ -1,10 +1,20 @@
-import { React } from "../inc/react.js";
+import React, { useEffect, useState } from "https://esm.sh/react?dev&no-check";
 
-// const fetchLatestPosts = () => {
-//     fetch()
-// }
+const fetchLatestPosts = async () => {
+    const postData = await fetch(`${SiteSettings.endpoint}?rest_route=/wp/v2/posts`);
+    return postData.json();
+}
 
 const App = () => {
+    const [postData, setPostData] = useState([]);
+
+    useEffect(() => {
+        fetchLatestPosts()
+            .then(data =>
+                setPostData(data)
+            );
+    }, []);
+    
     return (
         <div className="root">
             <header>
@@ -24,7 +34,9 @@ const App = () => {
                 </nav>
             </header>
             <div id="main-content">
-                <p>Open up App.tsx to start working on your app, do it!</p>
+                { postData?.map(post => {
+                    return <article>{post.title.rendered}<br />{post.content.rendered}</article>
+                }) }
             </div>
         </div>
     );
