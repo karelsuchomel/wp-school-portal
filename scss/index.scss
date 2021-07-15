@@ -1,5 +1,5 @@
-@use "variables" as vars;
 @use "fonts";
+@use "variables" as vars;
 
 // Incorporated libraries
 @use "inc/bootstrap" with(
@@ -17,20 +17,11 @@ $pswp__background-color: #fff,
 
 // Styling
 @use "type";
-@use "skip-to-content-link";
 @use "content";
 @use "footer";
 @use "buttons";
 
 @use "header/header";
-@use "header/hamburger-icon";
-@use "header/mobile-navigation";
-@use "header/language-selector";
 
 @use "blocks/hero-card";
 @use "blocks/product-showcase";
-
-@use "custom-classes/footer-product-listing";
-
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Jaldi:700|Source+Sans+Pro:400,600&display=swap&subset=latin-ext');

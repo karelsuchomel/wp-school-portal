@@ -19,8 +19,9 @@ class SP_LoadNavigation {
 	 */
 	public function print_data() {
 		$menu_data = sprintf(
-			'var preloadedNavigationData = %s;',
-			$this->add_json_data()
+			'const preloadedNavigationDataPrimary = %s; const preloadedNavigationDataUser = %s;',
+			$this->add_json_data("primary"),
+			$this->add_json_data("user-centric"),
 		);
 		wp_add_inline_script( 'sp-react', $menu_data, 'before' );
 	}
@@ -28,10 +29,10 @@ class SP_LoadNavigation {
 	/**
 	 * Dumps the current query response as a JSON-encoded string
 	 */
-	public function add_json_data() {
+	public function add_json_data($navigationId) {
 		return wp_json_encode( array(
 			'enabled' => class_exists( 'WP_REST_Menus' ),
-			'data' => $this->get_menu_data(),
+			'data' => $this->get_menu_data($navigationId),
 		) );
 	}
 
@@ -40,12 +41,12 @@ class SP_LoadNavigation {
 	 *
 	 * @return array
 	 */
-	public function get_menu_data() {
+	public function get_menu_data($navigationId) {
 		$menu = array();
 
 		$request = new \WP_REST_Request();
 		$request['context'] = 'view';
-		$request['location'] = 'primary';
+		$request['location'] = $navigationId;
 
 		if ( class_exists( 'WP_REST_Menus' ) ) {
 			$menu_api = new WP_REST_Menus();

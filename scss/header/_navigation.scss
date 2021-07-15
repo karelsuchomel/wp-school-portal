@@ -1,0 +1,61 @@
+@use '../inc/bootstrap' as bs;
+@use '../variables' as vars;
+@use '../mixins' as mixin;
+
+#header-navigation {
+	display: flex;
+	align-items: flex-start;
+
+	.spacer {
+		flex-grow: 2;
+	}
+}
+
+.navigation-group {
+	display: flex;
+	flex-grow: 0;
+
+	&.align-left {
+		align-items: flex-start;
+		> * {
+			margin-right: 1rem;
+		}
+	}
+	&.align-right {
+		align-items: flex-end;
+		> * {
+			margin-left: 1rem;
+		}
+	}
+
+	.nav-item {
+		&.current-menu-item .nav-link {
+			background-color: vars.$light;
+		}
+	}
+
+	.nav-link {
+		@include mixin.reset-anchor;
+		display: block;
+		padding: 0.75rem;
+		border-radius: vars.$border-radius;
+
+		font-size: 1rem;
+
+		background-color: transparent;
+		&:hover, &:active, &:focus {
+			background-color: vars.$gray;
+			transition: background-color vars.$animation-duration;
+		}
+	}
+
+	@include bs.media-breakpoint-down('lg') {
+		.nav-item {
+			font-size: 1rem;
+		}
+	}
+
+	@include bs.media-breakpoint-down('sm') {
+		display: none;
+	}
+}

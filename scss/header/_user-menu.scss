@@ -1,0 +1,9 @@
+@use '../variables' as vars;
+
+.user-menu {
+  width: 2.25rem;
+  height: 2.25rem;
+  margin: 0.25rem 0.25rem 0.25rem 1rem;
+  border-radius: 50%;
+  background: vars.$gray;
+}

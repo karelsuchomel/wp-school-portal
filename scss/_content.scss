@@ -1,15 +1,15 @@
-@use 'variables' as *;
+@use 'variables' as vars;
 @use 'mixins' as mixin;
 
 body {
 	margin: 0;
 }
 
-#content > div {
-	max-width: $page-max-width;
+#main-content {
+	max-width: vars.$content-max-width;
 	box-sizing: content-box;
 	margin: 0 auto;
 	@include mixin.apply-page-gutters() {
-		padding: 0 $page-gutter;
+		padding: 0 vars.$page-gutter;
 	}
 }

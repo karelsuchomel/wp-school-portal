@@ -3,8 +3,6 @@ const scssProcess = Deno.run({
   cmd: [
     "sass",
     "--watch",
-    "--quiet",
-    "--no-error-css",
     "--style",
     "expanded",
     "scss/index.scss:dist/css/client.css",
@@ -18,7 +16,7 @@ const jsProcess = Deno.run({
   cmd: [
     "deno",
     "bundle",
-    "./js/client/client.tsx",
+    "./js/client/client.jsx",
     "./dist/js/client.js",
     "--unstable",
     "--watch",

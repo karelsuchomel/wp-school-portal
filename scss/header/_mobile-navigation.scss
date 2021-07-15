@@ -1,8 +1,0 @@
-@use '../variables' as v;
-@use '../inc/bootstrap' as bs;
-
-@include bs.media-breakpoint-down(v.$to-mobile-navigation-breakpoint-down) {
-	#primary-navigation-toggle {
-		display: flex;
-	}
-}

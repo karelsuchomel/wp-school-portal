@@ -2,7 +2,7 @@
 @use "inc/bootstrap" as bs;
 
 body {
-	font-family: 'Source Sans Pro';
+	font-family: vars.$base-font;
 	color: vars.$base-text-color;
 }
 

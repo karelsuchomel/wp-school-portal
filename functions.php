@@ -25,7 +25,8 @@ if ( ! function_exists( 'school_portal_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'school-portal' ),
+				'primary' => esc_html__( 'Primary', 'school-portal' ),
+				'user-centric' => esc_html__( 'User-centric', 'school-portal' ),
 			)
 		);
 
@@ -99,6 +100,6 @@ add_action( 'admin_menu', 'my_remove_menu_pages' );
 // TODO: Enqueue block editor scripts and styles
 // require get_template_directory() . '/inc/custom-blocks/block-editor-scripts.php';
 
-require get_template_directory() . '/php/load-navigation.php';
+require_once get_template_directory() . '/php/load-navigation.php';
 
 
