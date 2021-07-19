@@ -19,9 +19,10 @@ class SP_LoadNavigation {
 	 */
 	public function print_data() {
 		$menu_data = sprintf(
-			'const preloadedNavigationDataPrimary = %s; const preloadedNavigationDataUser = %s;',
+			'window.preloadedNavigationDataPrimary = %s; window.preloadedNavigationDataUser = %s; window.preloadedNavigationFrontPageSidebar = %s;',
 			$this->add_json_data("primary"),
 			$this->add_json_data("user-centric"),
+			$this->add_json_data("front-page-sidebar"),
 		);
 		wp_add_inline_script( 'sp-react', $menu_data, 'before' );
 	}

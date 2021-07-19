@@ -1,0 +1,136 @@
+$icomoon-font-family: "feather" !default;
+$icomoon-font-path: "fonts" !default;
+
+$icon-alert-circle: "\e900";
+$icon-alert-triangle: "\e901";
+$icon-bell: "\e910";
+$icon-check-square: "\e902";
+$icon-edit-3: "\e911";
+$icon-log-in: "\e908";
+$icon-moon: "\e903";
+$icon-more-horizontal: "\e909";
+$icon-more-vertical: "\e90a";
+$icon-phone: "\e90b";
+$icon-plus: "\e90c";
+$icon-printer: "\e90d";
+$icon-settings: "\e904";
+$icon-smile: "\e912";
+$icon-sun: "\e913";
+$icon-trash-2: "\e914";
+$icon-user: "\e90e";
+$icon-x: "\e90f";
+
+@font-face {
+  font-family: '#{$icomoon-font-family}';
+  src: url('../../fonts/feather-icons/feather.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@mixin icon-font {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: '#{$icomoon-font-family}' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin icon-alert-circle {
+  &:before {
+    content: $icon-alert-circle; 
+  }
+}
+@mixin icon-alert-triangle {
+  &:before {
+    content: $icon-alert-triangle; 
+  }
+}
+@mixin icon-bell {
+  &:before {
+    content: $icon-bell; 
+  }
+}
+@mixin icon-check-square {
+  &:before {
+    content: $icon-check-square; 
+  }
+}
+@mixin icon-edit-3 {
+  &:before {
+    content: $icon-edit-3; 
+  }
+}
+@mixin icon-log-in {
+  &:before {
+    content: $icon-log-in; 
+  }
+}
+@mixin icon-moon {
+  &:before {
+    content: $icon-moon; 
+  }
+}
+@mixin icon-more-horizontal {
+  &:before {
+    content: $icon-more-horizontal; 
+  }
+}
+@mixin icon-more-vertical {
+  &:before {
+    content: $icon-more-vertical; 
+  }
+}
+@mixin icon-phone {
+  &:before {
+    content: $icon-phone; 
+  }
+}
+@mixin icon-plus {
+  &:before {
+    content: $icon-plus; 
+  }
+}
+@mixin icon-printer {
+  &:before {
+    content: $icon-printer; 
+  }
+}
+@mixin icon-settings {
+  &:before {
+    content: $icon-settings; 
+  }
+}
+@mixin icon-smile {
+  &:before {
+    content: $icon-smile; 
+  }
+}
+@mixin icon-sun {
+  &:before {
+    content: $icon-sun; 
+  }
+}
+@mixin icon-trash-2 {
+  &:before {
+    content: $icon-trash-2; 
+  }
+}
+@mixin icon-user {
+  &:before {
+    content: $icon-user; 
+  }
+}
+@mixin icon-x {
+  &:before {
+    content: $icon-x; 
+  }
+}
+

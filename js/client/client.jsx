@@ -1,11 +1,11 @@
-import { React, ReactDOM } from "../inc/react.js";
+import React from "https://esm.sh/react?dev&no-check";
+import ReactDOM from "https://esm.sh/react-dom?dev&no-check"
 
 import App from "./App.jsx";
 
-window.addEventListener("DOMContentLoaded", (evt) => {
+window.addEventListener("DOMContentLoaded", () => {
     ReactDOM.render(
         <App />,
-        // @ts-ignore
         document.getElementById("root"),
     );
 });

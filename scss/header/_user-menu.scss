@@ -1,9 +1,33 @@
 @use '../variables' as vars;
+@use '../fonts';
 
 .user-menu {
+  @include  fonts.icon-font;
+  @include fonts.icon-user;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 2.25rem;
   height: 2.25rem;
   margin: 0.25rem 0.25rem 0.25rem 1rem;
   border-radius: 50%;
   background: vars.$gray;
+
+  font-size: 1.25rem;
+}
+
+.theme-switcher {
+  @include  fonts.icon-font;
+  @include fonts.icon-moon;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: 1rem;
+
+  font-size: 1.25rem;
 }

@@ -27,6 +27,7 @@ if ( ! function_exists( 'school_portal_setup' ) ) :
 			array(
 				'primary' => esc_html__( 'Primary', 'school-portal' ),
 				'user-centric' => esc_html__( 'User-centric', 'school-portal' ),
+				'front-page-sidebar' => esc_html__( 'Front page side bar', 'school-portal' ),
 			)
 		);
 
@@ -102,5 +103,6 @@ add_action( 'admin_menu', 'my_remove_menu_pages' );
 
 require_once get_template_directory() . '/php/load-navigation.php';
 require_once get_template_directory() . '/php/load-settings.php';
+require_once get_template_directory() . '/php/permalinks.php';
 
 

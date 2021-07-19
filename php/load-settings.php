@@ -23,7 +23,7 @@ function sp_preload_wp_settings() {
 	$user_id = get_current_user_id();
 
 	$wp_settings = sprintf(
-		'const SiteSettings = %s;',
+		'window.SiteSettings = %s;',
 		wp_json_encode( array(
 			'endpoint' => $url,
 			'nonce' => wp_create_nonce( 'wp_rest' ),
