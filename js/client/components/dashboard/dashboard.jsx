@@ -56,7 +56,7 @@ const Dashboard = () => {
         <div>
             <nav className="sidebar-navigation">
                 { preloadedNavigationFrontPageSidebar.data.map(({title, url}, i) => {
-                    return <div key={i} className="nav-item"><Link className="nav-link" to={getRelativePath(url)}>{title}</Link></div>
+                    return <div key={i} className="nav-item"><Link className="nav-link" to={`/${ getRelativePath(url) }`}>{title}</Link></div>
                 }) }
             </nav>
             <div id="main-content">

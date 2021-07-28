@@ -1,5 +1,5 @@
 import React from "https://esm.sh/react?dev&no-check";
-import { BrowserRouter, Switch, Route, Link } from "https://esm.sh/react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "https://esm.sh/react-router-dom";
 import Dashboard from "./components/dashboard/dashboard.jsx";
 import Page from "./components/post/page.jsx";
 import NotFound from "./components/404/not-found.jsx";
@@ -45,7 +45,7 @@ const App = () => {
             {/*<Route path={ `${ path }date/:year/:month/:day/p/:paged` } component={ DateArchive } />*/}
             {/*<Route path={ `${ path }author/:slug` } component={ Author } />*/}
             {/*<Route path={ `${ path }author/:slug/p/:paged` } component={ Author } />*/}
-            <Route path={ `${ path }page/**` } component={ Page } />
+            <Route path={ `${ path }page/:slugOrId` } component={ Page } />
             { frontPageRoute }
             <Route path="*" component={ NotFound } />
         </Switch>
@@ -55,19 +55,19 @@ const App = () => {
     
     return (
         <div className="root">
-            <BrowserRouter basename="">
+            <Router basename="">
                 <header>
                     <nav id="header-navigation">
                         <div className="navigation-group align-left">
                             <div className="nav-item"><Link className="nav-link" to={frontPageRoute}>Home</Link></div>
                             { preloadedNavigationDataPrimary.data.map(({title, url}, i) => {
-                                return <div key={i} className="nav-item"><Link className="nav-link" to={getRelativePath(url)}>{title}</Link></div>
+                                return <div key={i} className="nav-item"><Link className="nav-link" to={`/${ getRelativePath(url) }`}>{title}</Link></div>
                             }) }
                         </div>
                         <div className="spacer"/>
                         <div className="navigation-group align-right">
                             { preloadedNavigationDataUser.data.map(({title, url}, i) => {
-                                return <div key={i} className="nav-item"><Link className="nav-link" to={getRelativePath(url)}>{title}</Link></div>
+                                return <div key={i} className="nav-item"><Link className="nav-link" to={`/${ getRelativePath(url) }`}>{title}</Link></div>
                             }) }
                             <div className="user-menu"/>
                             <div className="theme-switcher"/>
@@ -75,7 +75,7 @@ const App = () => {
                     </nav>
                 </header>
                 { routes }
-            </BrowserRouter>
+            </Router>
         </div>
     );
 };
