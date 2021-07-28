@@ -12,6 +12,19 @@ services:
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
 
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+    restart: always
+    links:
+      - db
+    ports:
+      - "8001:80"
+    volumes:
+      - /sessions
+
   wordpress:
     depends_on:
       - db
@@ -27,5 +40,6 @@ services:
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DEBUG: 1
+
 volumes:
   db_data: {}
