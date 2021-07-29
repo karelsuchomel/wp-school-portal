@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from "https://esm.sh/react?dev&no-check";
-import { useParams } from "https://esm.sh/react-router-dom?dev&no-check";
 import isEmpty from "https://esm.sh/lodash.isempty?dev&no-check";
+import { siteSettings } from '../../utils.js';
 
-const Page = () => {
-    let { slugOrId } = useParams();
-
-    const fetchLatestPosts = async () => {
-        const postData = await fetch(`${SiteSettings.endpoint}?rest_route=/wp/v2/pages&pagename=${slugOrId}&_embed=true`);
-        return postData.json();
-    }
-
+const Page = (props) => {
     const [postData, setPostData] = useState({});
 
-    useEffect(() => {
+    useEffect(() =>
+    {
+        let validRequest = true;
+
+        const fetchLatestPosts = async () => {
+            const postData = await fetch(`${siteSettings.endpoint}?rest_route=/wp/v2/pages&slug=${props.match.params.slugOrId}&_embed=true`);
+            const data = await postData.json();
+            if(validRequest) {
+                setPostData(data[0]);
+            }
+        }
+
         fetchLatestPosts()
-            .then(data =>
-                setPostData(data)
-            );
-    }, []);
+        return () => {
+            validRequest = false;
+        }
+    }, [props.match.params.slugOrId]);
 
     let postContent;
     if(!isEmpty(postData)) {

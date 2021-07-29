@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "https://esm.sh/react?dev&no-check";
 import { Link } from "https://esm.sh/react-router-dom";
-import { getRelativePath } from '../../utils.js';
+import { getRelativePath, siteSettings } from '../../utils.js';
 
 const Dashboard = () => {
     // const renderArticle = () => {
@@ -39,7 +39,7 @@ const Dashboard = () => {
     // }
 
     const fetchLatestPosts = async () => {
-        const postData = await fetch(`${SiteSettings.endpoint}?rest_route=/wp/v2/posts`);
+        const postData = await fetch(`${siteSettings.endpoint}?rest_route=/wp/v2/posts`);
         return postData.json();
     }
 
@@ -55,7 +55,7 @@ const Dashboard = () => {
     return (
         <div>
             <nav className="sidebar-navigation">
-                { preloadedNavigationFrontPageSidebar.data.map(({title, url}, i) => {
+                { siteSettings.navigationData.dashboard.map(({title, url}, i) => {
                     return <div key={i} className="nav-item"><Link className="nav-link" to={`/${ getRelativePath(url) }`}>{title}</Link></div>
                 }) }
             </nav>

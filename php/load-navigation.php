@@ -19,7 +19,7 @@ class SP_LoadNavigation {
 	 */
 	public function print_data() {
 		$menu_data = sprintf(
-			'window.preloadedNavigationDataPrimary = %s; window.preloadedNavigationDataUser = %s; window.preloadedNavigationFrontPageSidebar = %s;',
+			'window.navigationData = { primary: %s, userMenu: %s, dashboard: %s };',
 			$this->add_json_data("primary"),
 			$this->add_json_data("user-centric"),
 			$this->add_json_data("front-page-sidebar"),
@@ -31,10 +31,11 @@ class SP_LoadNavigation {
 	 * Dumps the current query response as a JSON-encoded string
 	 */
 	public function add_json_data($navigationId) {
-		return wp_json_encode( array(
-			'enabled' => class_exists( 'WP_REST_Menus' ),
-			'data' => $this->get_menu_data($navigationId),
-		) );
+	    if(class_exists( 'WP_REST_Menus' )) {
+            return wp_json_encode( $this->get_menu_data($navigationId) );
+	    } else {
+	        return wp_json_encode( array("REST Menu plugin is not installed or disabled") );
+	    }
 	}
 
 	/**
