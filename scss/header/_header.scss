@@ -6,8 +6,8 @@
 @forward 'user-menu';
 
 header {
+	grid-area: header-top / most-right / header-bottom / most-left;
 	display: block;
-	margin: 0 auto;
 	max-width: vars.$page-max-width;
 	box-sizing: content-box;
 	padding: 1rem;

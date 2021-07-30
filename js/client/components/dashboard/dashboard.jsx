@@ -1,98 +1,68 @@
 import React, { useEffect, useState } from "https://esm.sh/react?dev&no-check";
-import { Link } from "https://esm.sh/react-router-dom";
+import { Switch, Route, Link, useRouteMatch } from "https://esm.sh/react-router-dom?dev&no-check";
 import { getRelativePath, siteSettings } from '../../utils.js';
 
+import Post from "../post/post.jsx";
+import Page from "../post/page.jsx";
+
 const Dashboard = () => {
-    // const renderArticle = () => {
-    //     const post = this.props.post;
-    //     if ( ! post ) {
-    //         return null;
-    //     }
-    //
-    //     const meta = {
-    //         title: he.decode( `${ post.title.rendered } – ${ FoxhoundSettings.meta.title }` ),
-    //         description: he.decode( stripTags( post.excerpt.rendered ) ),
-    //         canonical: post.link,
-    //     };
-    //
-    //     const classes = classNames( {
-    //         entry: true,
-    //     } );
-    //     const featuredMedia = getFeaturedMedia( post );
-    //
-    //     return (
-    //         <article id={ `post-${ post.id }` } className={ classes }>
-    //             <DocumentMeta { ...meta } />
-    //             <BodyClass classes={ [ 'single', 'single-post' ] } />
-    //             <h1 className="entry-title" dangerouslySetInnerHTML={ getTitle( post ) } />
-    //             { featuredMedia ? <Media media={ featuredMedia } parentClass="entry-image" /> : null }
-    //             <div className="entry-meta" />
-    //             <div className="entry-content" dangerouslySetInnerHTML={ getContent( post ) } />
-    //
-    //             <PostMeta post={ post } humanDate={ getDate( post ) } />
-    //         </article>
-    //     );
-    // };
-
-    // if ( !! this.props.previewId ) {
-    //     return <PostPreview id={ this.props.previewId } />;
-    // }
-
-    const fetchLatestPosts = async () => {
-        const postData = await fetch(`${siteSettings.endpoint}?rest_route=/wp/v2/posts`);
-        return postData.json();
-    }
-
-    const [postData, setPostData] = useState([]);
-
-    useEffect(() => {
-        fetchLatestPosts()
-            .then(data =>
-                setPostData(data)
-            );
-    }, []);
+    let { path } = useRouteMatch();
 
     return (
-        <div>
+        <div className="dashboard-wrapper">
             <nav className="sidebar-navigation">
                 { siteSettings.navigationData.dashboard.map(({title, url}, i) => {
                     return <div key={i} className="nav-item"><Link className="nav-link" to={`/${ getRelativePath(url) }`}>{title}</Link></div>
                 }) }
             </nav>
-            <div id="main-content">
-                { postData?.map((post, i) => {
-                    return <article key={i}>
-                        <a href={post.link}>{post.title.rendered}</a>
-                        {post.excerpt.rendered}
-                    </article>
-                }) }
+            <div className="dashboard-content">
+                <Switch>
+                    <Route exact path={path}>
+                        <Posts />
+                    </Route>
+                    <Route path={ `${ path }:year/:month/:slug` }>
+                        <Post />
+                    </Route>
+                    <Route path={ `${ path }page/:slug` }>
+                        <Page />
+                    </Route>
+                </Switch>
             </div>
         </div>
+    );
+}
 
-        // <div className="card">
-        //     <QueryPosts postSlug={ this.props.slug } />
-        //     { this.props.loading ? <Placeholder type="post" /> : this.renderArticle() }
-        // </div>
+const Posts = () => {
+    const [postsData, setPostsData] = useState([]);
+
+    useEffect(() => {
+        let isValid = true;
+
+        const fetchLatestPosts = async () => {
+            // TODO : Handle cases where invalid slug won't return any data
+            const postData = await fetch(`${siteSettings.endpoint}?rest_route=/wp/v2/posts`);
+            const data = await postData.json();
+            if(isValid) {
+                setPostsData(data);
+            }
+        }
+
+        fetchLatestPosts();
+        return () => {
+            isValid = false;
+        }
+    }, []);
+
+    return (
+        <div className="posts-wrapper">
+            { postsData.map((post, i) => (
+                <article key={i}>
+                    <Link to={`/${ getRelativePath(post.link) }`}>{post.title.rendered}</Link>
+                    {post.excerpt.rendered}
+                </article>
+            ) )}
+        </div>
     );
 }
 
 export default Dashboard;
-
-// export default connect( ( state, { match, location } ) => {
-//     const slug = match.params.slug || false;
-//     const postId = getPostIdFromSlug( state, slug );
-//     const requesting = isRequestingPost( state, slug );
-//     const post = getPost( state, parseInt( postId ) );
-//
-//     const query = location.search.replace( '?', '' );
-//     const previewId = qs.parse( query ).preview_id || null;
-//
-//     return {
-//         previewId,
-//         slug,
-//         postId,
-//         post,
-//         requesting,
-//         loading: requesting && ! post,
-//     };
-// } )( Dashboard );

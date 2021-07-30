@@ -5,11 +5,8 @@ body {
 	margin: 0;
 }
 
-#main-content {
-	max-width: vars.$content-max-width;
-	box-sizing: content-box;
-	margin: 0 auto;
-	@include mixin.apply-page-gutters() {
-		padding: 0 vars.$page-gutter;
-	}
+#root {
+	display: grid;
+	grid-template-rows: [header-top] auto [header-bottom] auto [footer-top] auto [footer-bottom];
+	grid-template-columns: [most-right] 1fr [most-left];
 }

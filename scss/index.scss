@@ -15,13 +15,17 @@ $pswp__background-color: #fff,
 // Variables, mixins, functions
 @use "mixins";
 
-// Styling
+// Basic elements
 @use "type";
-@use "content";
 @use "footer";
 @use "buttons";
+@use "content";
 
 @use "header/header";
 
+// Apps
+@use "dashboard/dashboard";
+
+// Gutenberg - Content blocks
 @use "blocks/hero-card";
 @use "blocks/product-showcase";

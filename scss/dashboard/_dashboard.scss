@@ -1,0 +1,41 @@
+@use '../variables' as vars;
+@use '../mixins' as mixin;
+
+.dashboard-wrapper {
+  display: grid;
+  grid-template-columns: [most-right] 20rem [sidebar-divider] 1fr [most-left];
+  grid-template-areas: "sidebar content";
+}
+
+.sidebar-navigation {
+  grid-area: sidebar;
+  @include mixin.apply-page-gutters() {
+    padding: 0 vars.$page-gutter;
+  }
+
+  .nav-link {
+    @include mixin.reset-anchor;
+    display: block;
+    padding: 0.75rem;
+    border-radius: vars.$border-radius;
+
+    font-size: 1rem;
+
+    background-color: transparent;
+    &:hover, &:active, &:focus {
+      background-color: vars.$gray;
+      transition: background-color vars.$animation-duration;
+    }
+  }
+}
+
+.dashboard-content {
+  grid-area: content;
+  max-width: vars.$content-max-width;
+  box-sizing: border-box;
+  margin: 0 auto;
+
+  @include mixin.apply-page-gutters() {
+    padding: 0 vars.$page-gutter;
+  }
+}

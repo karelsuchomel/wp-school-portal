@@ -3,7 +3,7 @@ import { useParams } from "https://esm.sh/react-router-dom?dev&no-check";
 import Single from "./single.jsx";
 import { siteSettings } from '../../utils.js';
 
-const Page = () => {
+const Post = () => {
     const [pageData, setPageData] = useState({});
     let { slug } = useParams();
 
@@ -11,15 +11,15 @@ const Page = () => {
     {
         let validRequest = true;
 
-        const fetchPageContent = async () => {
-            const pageData = await fetch(`${siteSettings.endpoint}?rest_route=/wp/v2/pages&slug=${slug}&_embed=true`);
+        const fetchPostContent = async () => {
+            const pageData = await fetch(`${siteSettings.endpoint}?rest_route=/wp/v2/posts&slug=${slug}&_embed=true`);
             const data = await pageData.json();
             if(validRequest) {
                 setPageData(data[0]);
             }
         }
 
-        fetchPageContent()
+        fetchPostContent()
         return () => {
             validRequest = false;
         }
@@ -30,4 +30,4 @@ const Page = () => {
     );
 }
 
-export default Page;
+export default Post;
