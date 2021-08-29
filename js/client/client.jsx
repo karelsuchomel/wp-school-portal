@@ -19,7 +19,7 @@ const App = () => {
         const FrontPageComponent = props => (
             <SinglePage slug={ siteSettings.frontPage.page } { ...props } />
         );
-        frontPageRoute = <Route path={ path } component={ FrontPageComponent } />;
+        frontPageRoute = <Route path={ path } component={ Dashboard } />;
     } else {
         blogURL = path;
         frontPageRoute = "/";
@@ -58,7 +58,6 @@ const App = () => {
             <header>
                 <nav id="header-navigation">
                     <div className="navigation-group align-left">
-                        <div className="nav-item"><Link className="nav-link" to={frontPageRoute}>Home</Link></div>
                         { siteSettings.navigationData.primary.map(({title, url}, i) => {
                             return (
                                 <div key={i} className="nav-item">

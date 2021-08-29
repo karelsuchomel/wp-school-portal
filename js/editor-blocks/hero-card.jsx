@@ -9,6 +9,9 @@
         title: 'Hero card',
         icon: 'smiley',
         category: 'common',
+        supports: {
+            alignWide: true,
+        },
         attributes: {
             headerContent: {
                 type: 'string'

@@ -1,6 +1,6 @@
 # How to add new Gutenberg blocks
 
-1. Define new block type in the /inc/load-editor-blocks.php file like this
+1. Define new block type in the /php/load-editor-blocks.php file like this
 ```php
 register_block_type( 'school-portal/hero-card', array(
     'editor_script' => 'sp-editor-blocks-js',
