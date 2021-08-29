@@ -63,6 +63,7 @@ if ( ! function_exists( 'school_portal_setup' ) ) :
         add_theme_support( 'disable-custom-gradients' );
         add_theme_support( 'editor-styles' );
         add_theme_support( 'wp-block-styles' );
+        add_theme_support( 'align-wide' );
         add_editor_style( get_template_directory_uri() . '/assets/css/admin.css' );
 	}
 endif;
@@ -101,6 +102,7 @@ add_action( 'admin_menu', 'my_remove_menu_pages' );
 // TODO: Enqueue block editor scripts and styles
 // require get_template_directory() . '/inc/custom-blocks/block-editor-scripts.php';
 
+require_once get_template_directory() . '/php/load-editor-blocks.php';
 require_once get_template_directory() . '/php/load-navigation.php';
 require_once get_template_directory() . '/php/load-settings.php';
 require_once get_template_directory() . '/php/permalinks.php';

@@ -7,12 +7,12 @@ const scssProcess = Deno.run({
     "expanded",
     "scss/index.scss:dist/css/client.css",
     "scss/admin.scss:dist/css/admin.css",
-    "scss/blocks.scss:dist/css/blocks.css",
+    "scss/editor-blocks.scss:dist/css/editor-blocks.css",
   ],
 });
 
 // TypeScript/JavaScript
-const jsProcess = Deno.run({
+const jsClientProcess = Deno.run({
   cmd: [
     "deno",
     "bundle",
@@ -23,7 +23,20 @@ const jsProcess = Deno.run({
   ],
 });
 
-await jsProcess.status();
+const jsEditorProcess = Deno.run({
+  cmd: [
+    "deno",
+    "bundle",
+    "./js/editor-blocks/editor-blocks.jsx",
+    "./dist/js/editor-blocks.js",
+    "--unstable",
+    "--watch",
+  ],
+});
+
+await jsClientProcess.status();
+await jsEditorProcess.status();
 await scssProcess.status();
-jsProcess.close();
+jsClientProcess.close();
+jsEditorProcess.close();
 scssProcess.close();
