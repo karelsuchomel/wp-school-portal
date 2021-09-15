@@ -1,3 +1,5 @@
+import { ensureDirSync } from "https://deno.land/std/fs/mod.ts";
+
 // SCSS
 const scssProcess = Deno.run({
   cmd: [
@@ -11,13 +13,16 @@ const scssProcess = Deno.run({
   ],
 });
 
+// Node bundle cannot create missing directories and therefore would fail without this.
+ensureDirSync("./dist/js");
+
 // TypeScript/JavaScript
 const jsClientProcess = Deno.run({
   cmd: [
     "deno",
     "bundle",
-    "./js/client/client.jsx",
-    "./dist/js/client.js",
+    "js/client/client.jsx",
+    "dist/js/client.js",
     "--unstable",
     "--watch",
   ],
@@ -27,8 +32,8 @@ const jsEditorProcess = Deno.run({
   cmd: [
     "deno",
     "bundle",
-    "./js/editor-blocks/editor-blocks.jsx",
-    "./dist/js/editor-blocks.js",
+    "js/editor-blocks/editor-blocks.jsx",
+    "dist/js/editor-blocks.js",
     "--unstable",
     "--watch",
   ],

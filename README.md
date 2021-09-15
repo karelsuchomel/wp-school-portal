@@ -47,7 +47,7 @@ dart --disable-analytics
 
 **Install Dart Sass**
 ```bash
-pub global activate sass
+dart pub global activate sass
 echo 'export PATH="$HOME/.pub-cache/bin:$PATH"' >> ~/.bashrc
 ```
 
@@ -66,9 +66,9 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 ### To start developing
 
-Run the script to process JS and SCSS files
+Run the script to process JS and SCSS files (this needs to be done before you can use the theme).
 ```bash
-deno run -A start.ts
+deno run --allow-run --allow-read --allow-write --unstable start.ts 
 ```
 
 Run docker-compose to have local WordPress instance running with no hassle, and your theme installed (but you'll have to go through setup of fresh WP installation).
