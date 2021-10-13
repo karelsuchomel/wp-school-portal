@@ -28,19 +28,18 @@ function sp_preload_wp_settings() {
 			'endpoint' => $url,
 			'nonce' => wp_create_nonce( 'wp_rest' ),
 			'user' => $user_id,
-            			'userDisplay' => $user_id ? get_the_author_meta( 'display_name', $user_id ) : '',
-            			'frontPage' => array(
-            				'page' => $front_page_slug,
-            				'blog' => $blog_page_slug,
-            			),
-            			'URL' => array(
-            				'base' => esc_url_raw( $url ),
-            				'path' => $path,
-            			),
-            			'meta' => array(
-            				'title' => get_bloginfo( 'name', 'display' ),
-            				'description' => get_bloginfo( 'description', 'display' ),
-            			),
+            'userDisplay' => $user_id ? get_the_author_meta( 'display_name', $user_id ) : '',
+            'frontPage' => array(
+                'page' => $front_page_slug,
+            ),
+            'URL' => array(
+                'base' => esc_url_raw( $url ),
+                'path' => $path,
+            ),
+            'meta' => array(
+                'title' => get_bloginfo( 'name', 'display' ),
+                'description' => get_bloginfo( 'description', 'display' ),
+            ),
 		) ),
 	);
 	wp_add_inline_script( 'sp-react', $wp_settings, 'before' );

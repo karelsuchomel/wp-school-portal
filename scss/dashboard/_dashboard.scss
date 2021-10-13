@@ -39,3 +39,17 @@
     padding: 0 vars.$page-gutter;
   }
 }
+
+.post-list {
+  > article {
+    margin: 1rem;
+
+    h3 {
+
+    }
+
+    p {
+
+    }
+  }
+}
