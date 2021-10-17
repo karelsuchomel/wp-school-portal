@@ -6,7 +6,7 @@
 
 footer {
 	max-width: $page-max-width;
-	margin: $page-gutter auto;
+	margin: 2rem auto;
 	@include mixin.apply-page-gutters() {
 		padding: 0 $page-gutter;
 	}

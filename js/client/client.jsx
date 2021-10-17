@@ -76,7 +76,7 @@ const App = () => {
                             )
                         }) }
                         <div className="user-menu"/>
-                        <div className="theme-switcher"/>
+                        <div className="theme-switcher" onClick={switchTheme} />
                     </div>
                 </nav>
             </header>
@@ -84,6 +84,15 @@ const App = () => {
         </Router>
     );
 };
+
+const switchTheme = () => {
+  const appEl = document.getElementById('app');
+  if (appEl.classList.contains('light-theme')) {
+    appEl.classList.replace('light-theme', 'dark-theme');
+  } else {
+    appEl.classList.replace('dark-theme', 'light-theme');
+  }
+}
 
 const appRootElement = document.getElementById("root");
 ReactDOM.render(<App />, appRootElement);
