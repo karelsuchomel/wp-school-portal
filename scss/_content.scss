@@ -5,8 +5,35 @@ body {
 	margin: 0;
 }
 
+
+#app {
+	display: grid;
+	grid-template-rows: 1fr auto;
+	min-height: 100vh;
+
+	&.light-theme {
+		background: white;
+		color: black;
+		--text-color: black;
+		--headline-color: #555;
+		--link-color: blue;
+	}
+
+	&.dark-theme {
+		background: #1e1e26;
+		color: #f1f1f1;
+		--text-color: white;
+		--headline-color: #DDD;
+		--link-color: #90bbff;
+	}
+}
+
 #root {
 	display: grid;
 	grid-template-rows: [header-top] auto [header-bottom] auto [footer-top] auto [footer-bottom];
 	grid-template-columns: [most-right] 1fr [most-left];
+}
+
+a {
+	color: var(--link-color);
 }

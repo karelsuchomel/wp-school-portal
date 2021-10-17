@@ -18,8 +18,7 @@
 }
 
 .theme-switcher {
-  @include  fonts.icon-font;
-  @include fonts.icon-moon;
+  @include fonts.icon-font;
 
   display: flex;
   align-items: center;
@@ -30,4 +29,12 @@
   margin-left: 1rem;
 
   font-size: 1.25rem;
+}
+
+#app.light-theme .theme-switcher {
+  @include fonts.icon-moon;
+}
+
+#app.dark-theme .theme-switcher {
+  @include fonts.icon-sun;
 }
