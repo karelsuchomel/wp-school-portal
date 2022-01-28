@@ -74,6 +74,22 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 </details>
 
+<details>
+  <summary>Installation on Mac with brew</summary>
+
+**Install Deno**
+
+```bash
+brew install deno
+```
+
+**Install SASS**
+```bash
+brew install sass/sass/sass
+```
+
+</details>
+
 ### To start developing
 
 Run the script to process JS and SCSS files (this needs to be done before you
